@@ -3,7 +3,7 @@ package domain;
 import lombok.Data;
 
 @Data
-public class Book {
+public class Book extends Product {
     String name;
     String author;
 
