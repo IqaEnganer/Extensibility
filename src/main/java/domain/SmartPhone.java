@@ -8,29 +8,34 @@ import java.util.Objects;
 public class SmartPhone extends Product {
     private String manufacturer;
 
+    public SmartPhone() {
+    }
+
+    public SmartPhone(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
     public SmartPhone(int id, String name, int price, String manufacturer) {
         super(id, name, price);
         this.manufacturer = manufacturer;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        SmartPhone that = (SmartPhone) o;
-        return Objects.equals(manufacturer, that.manufacturer);
+    public SmartPhone(int id, String name, int price) {
+        super(id, name, price);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), manufacturer);
-    }
 
-    @Override
-    public String toString() {
-        return "SmartPhone{" +
-                "manufacturer='" + manufacturer + '\'' +
-                '}';
-    }
+
+//    public boolean productSearch(String search) {
+//        if (super.productSearch(search)){
+//            return true;
+//        }
+//        if (getManufacturer().contains(search)) {
+//            return true;
+//        }
+//        return false;
+//    }
+public boolean productSearch(String search) {
+    return super.productSearch(search) || getManufacturer().contains(search);
+}
 }

@@ -6,13 +6,12 @@ import java.util.Objects;
 
 @Data
 public class Book extends Product {
-    String name;
     String author;
 
 
-
-    public Book(){
+    public Book() {
     }
+
     public Book(String author) {
         this.author = author;
     }
@@ -22,25 +21,23 @@ public class Book extends Product {
         this.author = author;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "author='" + author + '\'' +
-                '}';
+    public Book(int id, String name, int price) {
+        super(id, name, price);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
-        Book book = (Book) o;
-        return Objects.equals(author, book.author);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(super.hashCode(), author);
-    }
+
+//    public boolean productSearch(String search) {
+//        if (super.productSearch(search)) {
+//            return true;
+//        }
+//        if (getAuthor().contains(search)) {
+//            return true;
+//        }
+//        return false;
+//    }
+public boolean productSearch(String search) {
+    return super.productSearch(search) || getAuthor().contains(search);
 }
 
+}
