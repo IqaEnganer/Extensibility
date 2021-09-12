@@ -37,12 +37,11 @@ class ManagerProductTest {
     private SmartPhone s2 = new SmartPhone(17, "Som-Phone", 15000, "Russia");
 
     @Test
-    public void shouldFixProduct(){
+    public void shouldProduct(){
         ManagerProduct product = new ManagerProduct(repository);
-        product.setNumberDisplayedFilms(1);
         product.add(b2);
         product.add(b5);
-        assertArrayEquals(new Product[]{b5},product.findAllFixReverse());
+        assertArrayEquals(new Product[]{b2,b5},product.findAll());
     }
 
     @Test
@@ -52,7 +51,7 @@ class ManagerProductTest {
         manager.add(b2);
         manager.add(b4);
         manager.remove(5);
-        assertArrayEquals(new Product[]{b2, b1, b}, manager.findAllFixReverse());
+        assertArrayEquals(new Product[]{b,b1,b2}, manager.findAll());
         manager.add(b3);
         manager.add(b4);
         manager.add(b5);
@@ -61,9 +60,6 @@ class ManagerProductTest {
         assertArrayEquals(new Product[]{b, b1, b2, b3, b4, b5, s, s1}, manager.findAll());
         manager.removeALl();
         assertArrayEquals(new Product[0], manager.findAll());
-        assertEquals(10, manager.getNumberDisplayedFilms());
-        manager.setNumberDisplayedFilms(5);
-        assertEquals(5, manager.getNumberDisplayedFilms());
 
 
     }
@@ -98,7 +94,14 @@ class ManagerProductTest {
     public void shouldSmartNonExistent(){
         manager.add(s);
         manager.add(s1);
-        assertArrayEquals(new Product[]{},manager.searchBy("Moza"));
+        assertArrayEquals(new Product[]{s},manager.searchBy("Japan"));
     }
+    @Test
+    public void shouldNumberWind(){
+        ManagerProduct manager2 = new ManagerProduct(repository);
 
+        manager2.add(b1);
+        manager2.add(b2);
+        assertArrayEquals(new Product[]{b2,b1},manager2.FindAllFixReverse());
+    }
 }
