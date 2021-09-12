@@ -6,12 +6,10 @@ import java.util.Objects;
 
 @Data
 public class Book extends Product {
-<<<<<<< HEAD
     String name;
     String author;
-=======
-    private String author;
->>>>>>> master
+
+
 
     public Book(){
     }
