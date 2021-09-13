@@ -6,13 +6,13 @@ import java.util.Objects;
 
 @Data
 public class Book extends Product {
-    String name;
-    String author;
+
+    private String author;
 
 
-
-    public Book(){
+    public Book() {
     }
+
     public Book(String author) {
         this.author = author;
     }

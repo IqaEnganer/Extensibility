@@ -6,23 +6,10 @@ import domain.SmartPhone;
 import repository.ProductRepository;
 
 public class ManagerProduct {
-    int numberDisplayedFilms = 10;
     private ProductRepository repository;
 
     public ManagerProduct(ProductRepository repository) {
         this.repository = repository;
-    }
-
-    public ManagerProduct(int numberDisplayedFilms) {
-        this.numberDisplayedFilms = numberDisplayedFilms;
-    }
-
-    public void setNumberDisplayedFilms(int numberDisplayedFilms) {
-        this.numberDisplayedFilms = numberDisplayedFilms;
-    }
-
-    public int getNumberDisplayedFilms() {
-        return numberDisplayedFilms;
     }
 
     public void add(Product product) {
@@ -41,21 +28,6 @@ public class ManagerProduct {
         repository.removeAll();
     }
 
-    public Product[] findAllFixReverse() {
-        Product[] product = repository.findAll();
-        int resultLength;
-        if (product.length < numberDisplayedFilms) {
-            resultLength = product.length;
-        } else {
-            resultLength = numberDisplayedFilms;
-        }
-        Product[] tmp = new Product[resultLength];
-        for (int i = product.length - resultLength; i < product.length; i++) {
-            int index = product.length - i + (product.length - resultLength - 1);
-            tmp[i - (product.length - resultLength)] = product[index];
-        }
-        return tmp;
-    }
 
     public Product[] searchBy(String text) {
         Product[] result = new Product[0];
