@@ -52,6 +52,7 @@ class ManagerProductTest {
         manager.add(s1);
         manager.add(s2);
     }
+
     //Показать по автору и имени (книгу или телефон)
     @Test
     public void shouldSearchByNameAndSearchByAuthor() {
@@ -68,6 +69,7 @@ class ManagerProductTest {
         // Найдено по автору 4 Книги
         assertArrayEquals(new Product[]{b7, b8, b9, b10}, manager.searchBy("Author"));
     }
+
     // Удалены все книги
     @Test
     public void shouldRemoveAll() {
