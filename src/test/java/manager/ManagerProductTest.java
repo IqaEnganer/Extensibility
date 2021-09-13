@@ -3,14 +3,9 @@ package manager;
 import domain.Book;
 import domain.Product;
 import domain.SmartPhone;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import repository.ProductRepository;
-
-import java.util.PrimitiveIterator;
-import java.util.prefs.PreferencesFactory;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -55,25 +50,38 @@ class ManagerProductTest {
 
     //Показать по автору и имени (книгу или телефон)
     @Test
-    public void shouldSearchByNameAndSearchByAuthor() {
+    public void shouldSearchByName() {
         // Найдено по имени 1 Книга
         assertArrayEquals(new Product[]{b1}, manager.searchBy("Анжелика"));
-        // Найдено по производителю 1 смартфон
-        assertArrayEquals(new Product[]{s1}, manager.searchBy("Russia"));
-        // Ничего не найдено
-        assertArrayEquals(new Product[]{}, manager.searchBy("Имбирь"));
-        // Найдено по автору 2 книги
-        assertArrayEquals(new Product[]{b, b1}, manager.searchBy("Аноним"));
-        // Найдено по названию 1 смартфон
-        assertArrayEquals(new Product[]{s}, manager.searchBy("Lich-Phone"));
-        // Найдено по автору 4 Книги
-        assertArrayEquals(new Product[]{b7, b8, b9, b10}, manager.searchBy("Author"));
     }
 
-    // Удалены все книги
     @Test
-    public void shouldRemoveAll() {
-        manager.removeALl();
-        assertArrayEquals(new Product[]{}, manager.searchBy("Japan"));
+    public void shouldSearchByManufacturer() {
+        // Найдено по производителю 1 смартфон
+        assertArrayEquals(new Product[]{s1}, manager.searchBy("Russia"));
+    }
+
+    @Test
+    public void shouldSearchByNotExistingValue() {
+        // Ничего не найдено
+        assertArrayEquals(new Product[]{}, manager.searchBy("Имбирь"));
+    }
+
+    @Test
+    public void shouldSearchByAuthor() {
+        // Найдено по автору 2 книги
+        assertArrayEquals(new Product[]{b, b1}, manager.searchBy("Аноним"));
+    }
+
+    @Test
+    public void shouldSearchByNameSmartphone() {
+        // Найдено по названию 1 смартфон
+        assertArrayEquals(new Product[]{s}, manager.searchBy("Lich-Phone"));
+    }
+
+    @Test
+    public void shouldSearchByAuthorSeveralBook() {
+        // Найдено по автору 4 Книги
+        assertArrayEquals(new Product[]{b7, b8, b9, b10}, manager.searchBy("Author"));
     }
 }

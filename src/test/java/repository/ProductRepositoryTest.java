@@ -68,13 +68,4 @@ class ProductRepositoryTest {
         assertEquals("Amoterasu", book.getName());
     }
 
-    @Test
-    public void shouldReverse() {
-        ProductRepository repository = new ProductRepository(1);
-        repository.save(b1);
-        repository.save(b2);
-        assertArrayEquals(new Product[]{b2}, repository.findAllFixReverse());
-
-    }
-
 }

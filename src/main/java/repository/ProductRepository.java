@@ -19,10 +19,6 @@ public class ProductRepository {
         return products;
     }
 
-    public void removeAll() {
-        Product[] product = new Product[0];
-        products = product;
-    }
 
     public void removeById(int id) {
         int length = products.length - 1;
@@ -35,31 +31,6 @@ public class ProductRepository {
             }
         }
         products = tmp;
-    }
-
-    int numberDisplayedFilms = 10;
-
-    public ProductRepository() {
-    }
-
-    public ProductRepository(int numberDisplayedFilms) {
-        this.numberDisplayedFilms = numberDisplayedFilms;
-    }
-
-    public Product[] findAllFixReverse() {
-        Product[] product = findAll();
-        int resultLength;
-        if (product.length < numberDisplayedFilms) {
-            resultLength = product.length;
-        } else {
-            resultLength = numberDisplayedFilms;
-        }
-        Product[] tmp = new Product[resultLength];
-        for (int i = product.length - resultLength; i < product.length; i++) {
-            int index = product.length - i + (product.length - resultLength - 1);
-            tmp[i - (product.length - resultLength)] = product[index];
-        }
-        return tmp;
     }
 
 

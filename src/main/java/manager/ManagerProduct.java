@@ -26,17 +26,6 @@ public class ManagerProduct {
         repository.removeById(id);
     }
 
-    public Product[] findAll() {
-        return repository.findAll();
-    }
-
-    public void removeALl() {
-        repository.removeAll();
-    }
-
-    public Product[] FindAllFixReverse() {
-        return repository.findAllFixReverse();
-    }
 
     public Product[] searchBy(String text) {
         Product[] result = new Product[0];
