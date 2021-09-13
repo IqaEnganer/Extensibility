@@ -19,7 +19,7 @@ public class ProductRepository {
         return products;
     }
 
-    public void removeAll(){
+    public void removeAll() {
         Product[] product = new Product[0];
         products = product;
     }

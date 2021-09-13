@@ -54,29 +54,35 @@ class ManagerProductTest {
     // Поиск книги по автору
     public void shouldBookByAuthor() {
         assertArrayEquals(new Product[]{b6}, manager.searchBy("Аист"));
-        assertArrayEquals(new Product[]{b5},manager.searchBy("Rush"));
+        assertArrayEquals(new Product[]{b5}, manager.searchBy("Rush"));
     }
 
+    // Поиск по имени
     @Test
     public void shouldBookByName() {
         assertArrayEquals(new Product[]{b3}, manager.searchBy("Дракон"));
     }
 
+    // Поиск по производителю
     @Test
     public void shouldSmartphoneByManufactures() {
         assertArrayEquals(new Product[]{s1, s2}, manager.searchBy("Russia"));
     }
 
+    // Поиск по имени
     @Test
     public void shouldSmartphoneByName() {
         assertArrayEquals(new Product[]{s1}, manager.searchBy("Summer"));
     }
 
+    // Просмотр не существующего продукта
     @Test
     public void shouldSearchNull() {
         assertArrayEquals(new Product[0], manager.searchBy("Gorilla"));
+        assertArrayEquals(new Product[0], manager.searchBy("Japana"));
     }
 
+    // Просмотр не скольких продуктов
     @Test
     public void shouldSeveralProduct() {
         assertArrayEquals(new Product[]{b7, b8, b9, b10}, manager.searchBy("Author"));
