@@ -29,44 +29,14 @@ class ManagerProductTest {
     private Book b8 = new Book(9, "Ногти во мгле", 500, "Author");
     private Book b9 = new Book(10, "Прах Учих", 100, "Author");
     private Book b10 = new Book(11, "Карандаш между ног", 1200, "Author");
-    private Book b11 = new Book(12, "Широкое познание", 520, "Author");
-    private Book b12 = new Book(13, "Взгляд в никуда", 160, "Author");
-    private Book b13 = new Book(14, "Горе в поезде", 450, "Author");
     private SmartPhone s = new SmartPhone(16, "Lich-Phone", 15000, "Japan");
-    private SmartPhone s1 = new SmartPhone(15, "Som-Phone", 15000, "Russia");
-    private SmartPhone s2 = new SmartPhone(17, "Som-Phone", 15000, "Russia");
+    private SmartPhone s1 = new SmartPhone(15, "PutinPhone", 15000, "Russia");
+    private SmartPhone s2 = new SmartPhone(17, "Apple", 15000, "USA");
+    private SmartPhone s3 = new SmartPhone(15, "Link", 15000, "USA");
+    private SmartPhone s4 = new SmartPhone(17, "Som-Phone", 15000, "Russia");
 
-    @Test
-    public void shouldProduct(){
-        ManagerProduct product = new ManagerProduct(repository);
-        product.add(b2);
-        product.add(b5);
-        assertArrayEquals(new Product[]{b2,b5},product.findAll());
-    }
-
-    @Test
-    public void showSaveAndAllDeleteProduct() {
-        manager.add(b);
-        manager.add(b1);
-        manager.add(b2);
-        manager.add(b4);
-        manager.remove(5);
-        assertArrayEquals(new Product[]{b,b1,b2}, manager.findAll());
-        manager.add(b3);
-        manager.add(b4);
-        manager.add(b5);
-        manager.add(s);
-        manager.add(s1);
-        assertArrayEquals(new Product[]{b, b1, b2, b3, b4, b5, s, s1}, manager.findAll());
-        manager.removeALl();
-        assertArrayEquals(new Product[0], manager.findAll());
-
-
-    }
-
-
-    @Test
-    public void shouldSearchByNameAndSearchByAuthor() {
+    @BeforeEach
+    public void setup() {
         manager.add(b);
         manager.add(b1);
         manager.add(b2);
@@ -78,30 +48,30 @@ class ManagerProductTest {
         manager.add(b8);
         manager.add(b9);
         manager.add(b10);
-        manager.add(b11);
         manager.add(s);
         manager.add(s1);
         manager.add(s2);
+    }
+    //Показать по автору и имени (книгу или телефон)
+    @Test
+    public void shouldSearchByNameAndSearchByAuthor() {
+        // Найдено по имени 1 Книга
         assertArrayEquals(new Product[]{b1}, manager.searchBy("Анжелика"));
-        assertArrayEquals(new Product[]{s1,s2}, manager.searchBy("Russia"));
+        // Найдено по производителю 1 смартфон
+        assertArrayEquals(new Product[]{s1}, manager.searchBy("Russia"));
+        // Ничего не найдено
         assertArrayEquals(new Product[]{}, manager.searchBy("Имбирь"));
+        // Найдено по автору 2 книги
         assertArrayEquals(new Product[]{b, b1}, manager.searchBy("Аноним"));
+        // Найдено по названию 1 смартфон
         assertArrayEquals(new Product[]{s}, manager.searchBy("Lich-Phone"));
-        assertArrayEquals(new Product[]{b7,b8,b9,b10,b11}, manager.searchBy("Author"));
-
+        // Найдено по автору 4 Книги
+        assertArrayEquals(new Product[]{b7, b8, b9, b10}, manager.searchBy("Author"));
     }
+    // Удалены все книги
     @Test
-    public void shouldSmartNonExistent(){
-        manager.add(s);
-        manager.add(s1);
-        assertArrayEquals(new Product[]{s},manager.searchBy("Japan"));
-    }
-    @Test
-    public void shouldNumberWind(){
-        ManagerProduct manager2 = new ManagerProduct(repository);
-
-        manager2.add(b1);
-        manager2.add(b2);
-        assertArrayEquals(new Product[]{b2,b1},manager2.FindAllFixReverse());
+    public void shouldRemoveAll() {
+        manager.removeALl();
+        assertArrayEquals(new Product[]{}, manager.searchBy("Japan"));
     }
 }

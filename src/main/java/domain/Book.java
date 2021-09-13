@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Data
 public class Book extends Product {
-    String author;
+     private String author;
 
 
     public Book() {
@@ -26,8 +26,7 @@ public class Book extends Product {
     }
 
 
-
-//    public boolean productSearch(String search) {
+    //    public boolean productSearch(String search) {
 //        if (super.productSearch(search)) {
 //            return true;
 //        }
@@ -36,8 +35,9 @@ public class Book extends Product {
 //        }
 //        return false;
 //    }
-public boolean productSearch(String search) {
-    return super.productSearch(search) || getAuthor().contains(search);
-}
+    @Override
+    public boolean matches(String search) {
+        return super.matches(search) || getAuthor().contains(search);
+    }
 
 }

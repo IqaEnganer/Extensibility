@@ -1,10 +1,13 @@
 package domain;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Objects;
 
 @Data
+@EqualsAndHashCode(callSuper = true)
+
 public class SmartPhone extends Product {
     private String manufacturer;
 
@@ -25,8 +28,7 @@ public class SmartPhone extends Product {
     }
 
 
-
-//    public boolean productSearch(String search) {
+    //    public boolean productSearch(String search) {
 //        if (super.productSearch(search)){
 //            return true;
 //        }
@@ -35,7 +37,8 @@ public class SmartPhone extends Product {
 //        }
 //        return false;
 //    }
-public boolean productSearch(String search) {
-    return super.productSearch(search) || getManufacturer().contains(search);
-}
+    @Override
+    public boolean matches(String search) {
+        return super.matches(search) || getManufacturer().contains(search);
+    }
 }

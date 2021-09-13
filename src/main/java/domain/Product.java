@@ -21,7 +21,7 @@ public class Product {
 
 
 
-    public boolean productSearch(String search) {
+    public boolean matches(String search) {
         if (getName().contains(search)) {
             return true;
         }
