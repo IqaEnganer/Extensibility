@@ -16,19 +16,6 @@ public class ManagerProduct {
         repository.save(product);
     }
 
-    public void remove(int id) {
-        repository.removeById(id);
-    }
-
-    public Product[] findAll() {
-        return repository.findAll();
-    }
-
-    public void removeALl() {
-        repository.removeAll();
-    }
-
-
     public Product[] searchBy(String text) {
         Product[] result = new Product[0];
         for (Product product : repository.findAll()) {
