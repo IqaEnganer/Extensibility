@@ -6,7 +6,7 @@ import java.util.Objects;
 
 @Data
 public class Book extends Product {
-     private String author;
+    private String author;
 
 
     public Book() {
