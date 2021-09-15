@@ -77,7 +77,7 @@ class ManagerProductTest {
         assertArrayEquals(new Product[0], manager.searchBy("Japana"));
     }
 
-    // Просмотр не скольких продуктов
+    // Просмотр не скольких продуктов//
     @Test
     public void shouldSeveralProduct() {
         assertArrayEquals(new Product[]{b7, b8, b9, b10}, manager.searchBy("Author"));
